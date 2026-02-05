@@ -1,0 +1,248 @@
+/* =========================================
+   1. UNIVERSE BACKGROUND & TYPOGRAPHY
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-deep: #030712;      /* True Void Black */
+  --bg-surface: #111827;   /* Off-black for cards */
+  --accent: #8b5cf6;       /* Vivid Violet */
+  --accent-glow: #8b5cf680;
+  --text-main: #f9fafb;    /* Pure White */
+  --text-muted: #9ca3af;   /* Cool Grey */
+  --border-glass: rgba(255, 255, 255, 0.08);
+}
+
+body {
+  background-color: var(--bg-deep);
+  /* The "Spotlight" Gradient Effect */
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.15), transparent 25%), 
+    radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.15), transparent 25%);
+  background-attachment: fixed;
+  
+  font-family: 'Inter', sans-serif;
+  color: var(--text-main) !important; /* Forces all text white */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   2. THE "FLOATING ISLAND" NAVBAR
+   ========================================= */
+.navbar {
+  background: rgba(17, 24, 39, 0.7) !important; /* Semi-transparent dark */
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border-glass);
+  padding: 1rem 0;
+  
+  /* Make it float (Optional - looks cool) */
+  margin: 1rem;
+  border-radius: 16px;
+  width: calc(100% - 2rem);
+}
+
+.navbar-brand {
+  color: var(--text-main) !important;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  font-size: 1.25rem;
+}
+
+.nav-link {
+  color: var(--text-muted) !important;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--text-main) !important;
+}
+
+/* =========================================
+   3. HIGH-CONTRAST CARDS
+   ========================================= */
+.card {
+  background: var(--bg-surface) !important;
+  border: 1px solid var(--border-glass) !important;
+  border-radius: 20px !important;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5); /* Deep shadow */
+  overflow: hidden;
+  animation: floatUp 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes floatUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card-body {
+  padding: 2.5rem !important;
+  color: var(--text-main);
+}
+
+.card h2, .card h3 {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 1.5rem;
+}
+
+/* =========================================
+   4. NEON INPUT FIELDS
+   ========================================= */
+.form-label {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.form-control {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid var(--border-glass) !important;
+  color: white !important; /* Text inside input */
+  border-radius: 12px !important;
+  padding: 14px;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.form-control:focus {
+  background: rgba(0, 0, 0, 0.5) !important;
+  border-color: var(--accent) !important;
+  box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.15) !important;
+  outline: none;
+}
+
+/* =========================================
+   5. GLOWING BUTTONS
+   ========================================= */
+.btn-primary {
+  background: var(--accent) !important;
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  color: white !important;
+  border-radius: 10px !important;
+  padding: 12px 24px;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(139, 92, 246, 0.3); /* The Glow */
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+  filter: brightness(1.1);
+}
+
+/* =========================================
+   6. VISIBILITY FIXES (Links & Text)
+   ========================================= */
+/* Fixes "Create your first note" visibility */
+a {
+  color: #60a5fa !important; /* Bright Electric Blue */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  color: #93c5fd !important;
+  text-decoration: underline;
+}
+
+/* Fixes "Welcome Yashwanth" visibility */
+h1, h2, h3, h4, h5, h6, p, span, div {
+  color: inherit; /* Inherits white from body */
+}
+
+/* "You have no notes yet" text */
+.text-muted {
+  color: #6b7280 !important; /* Mid-grey, visible on dark bg */
+}
+
+/* =========================================
+   7. ALERTS & FOOTER
+   ========================================= */
+.alert {
+  background: rgba(17, 24, 39, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--border-glass);
+  border-left: 4px solid var(--accent);
+  color: white;
+  border-radius: 12px;
+}
+
+footer {
+  margin-top: auto;
+  padding: 2rem;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.3);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border-glass);
+}
+
+/* =============================================
+   VISIBILITY & BACKGROUND FIXES
+   ============================================= */
+
+/* 1. Force the entire page background to be Deep Dark (overrides bg-light) */
+body, html {
+  background-color: #030712 !important; /* True Black */
+  background-image: 
+    radial-gradient(circle at 15% 50%, rgba(76, 29, 149, 0.2), transparent 25%), 
+    radial-gradient(circle at 85% 30%, rgba(59, 130, 246, 0.2), transparent 25%) !important;
+}
+
+/* 2. Make any container/wrapper transparent so the dark body shows through */
+.container, .container-fluid, .row, section, main, .bg-light, .bg-white {
+  background-color: transparent !important;
+  background: transparent !important;
+}
+
+/* 3. Specifically target the "Your Notes" Heading to make it POP */
+h1, h2, h3 {
+  color: #ffffff !important;          /* Pure White */
+  text-shadow: 0 2px 10px rgba(0,0,0,0.8); /* Strong shadow behind text */
+  font-weight: 700 !important;
+  letter-spacing: -0.5px;
+}
+
+/* 4. Ensure the Note Card stands out against the dark background */
+.card {
+  background: #111827 !important; /* Slightly lighter dark */
+  border: 1px solid rgba(255,255,255,0.1) !important;
+}
+
+/* =============================================
+   FOOTER FIX (Add to bottom of CSS)
+   ============================================= */
+
+/* 1. Force footer to be transparent so the dark background shows through */
+footer, footer.bg-primary {
+  background: transparent !important;
+  background-color: transparent !important;
+  
+  /* 2. Add a subtle "Glass" border on top */
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  
+  /* 3. Spacing and Text Color */
+  padding: 2rem 0 !important;
+  margin-top: auto;
+  color: rgba(255, 255, 255, 0.4) !important; /* Muted Grey Text */
+  font-size: 0.9rem;
+}
+
+/* 4. Make the links (like "Yashwanth Vanaparthi") glow slightly */
+footer a {
+  color: #a78bfa !important; /* Soft Purple */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+footer a:hover {
+  color: #fff !important;
+  text-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+}
