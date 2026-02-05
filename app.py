@@ -1,15 +1,19 @@
 from flask import Flask, render_template, request, redirect, session, flash, url_for
 import sqlite3
+import os
 from werkzeug.security import generate_password_hash, check_password_hash
 
 app = Flask(__name__)
-app.secret_key = "myverysecretkey"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DB_PATH = os.path.join(BASE_DIR, "notes.db")
+app.secret_key = os.environ.get("SECRET_KEY", "dev-secret-key")
+
 
 def get_db_connection():
-    conn = sqlite3.connect('notes.db')
-    # This line allows accessing columns by name (user['username'])
-    conn.row_factory = sqlite3.Row 
+    conn = sqlite3.connect(DB_PATH)
+    conn.row_factory = sqlite3.Row
     return conn
+
 
 @app.route('/')
 def home():
